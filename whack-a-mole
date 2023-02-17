@@ -1,0 +1,43 @@
+void setup() {
+   Serial.begin(9600);
+
+  pinMode(1, OUTPUT);
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, INPUT);
+  pinMode(7, INPUT);
+  pinMode(8, INPUT);
+  pinMode(9, INPUT);
+  pinMode(10, INPUT);
+  int flag=0;
+  int in=0;
+  int score=0;
+}
+
+void loop() {
+time=millis();
+if time%1000{
+dostuff
+}
+  if (flag==0){
+    N=random(1,6);
+    digitalWrite(N,HIGH);
+    flag=1;
+  }
+  in = digitalRead(N+5);
+  if (in==HIGH){
+    score+=1;
+    digitalWrite(N,LOW)
+    flag=0;
+  }
+  if (currentTime - previousTime >= 2000) {
+/*
+insert the code for a task to be repeated constantly
+*/
+}
+
+  // put your main code here, to run repeatedly:
+
+}
