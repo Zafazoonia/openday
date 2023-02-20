@@ -1,43 +1,52 @@
 void setup() {
    Serial.begin(9600);
 
-  pinMode(1, OUTPUT);
   pinMode(2, OUTPUT);
   pinMode(3, OUTPUT);
   pinMode(4, OUTPUT);
   pinMode(5, OUTPUT);
-  pinMode(6, INPUT);
+  pinMode(6, OUTPUT);
   pinMode(7, INPUT);
   pinMode(8, INPUT);
   pinMode(9, INPUT);
   pinMode(10, INPUT);
-  int flag=0;
-  int in=0;
-  int score=0;
-}
+  pinMode(11, INPUT);
+ randomSeed(analogRead(0));
 
-void loop() {
-time=millis();
-if time%1000{
-dostuff
 }
+int tflag=0;
+int flag=0;
+int N=0;
+int in=0;
+int score=0;
+unsigned long p_time=0;
+unsigned long c_time=0;
+void loop() {
+
+
   if (flag==0){
-    N=random(1,6);
+    N=random(2,7);
     digitalWrite(N,HIGH);
     flag=1;
   }
   in = digitalRead(N+5);
   if (in==HIGH){
-    score+=1;
-    digitalWrite(N,LOW)
+    score+=10;
+    digitalWrite(N,LOW);
     flag=0;
+    tflag=0;
   }
-  if (currentTime - previousTime >= 2000) {
-/*
-insert the code for a task to be repeated constantly
-*/
-}
-
-  // put your main code here, to run repeatedly:
-
+  if (tflag==0){
+    p_time=millis();
+    tflag=1;
+  }
+  c_time=millis();
+  
+  if ((c_time-p_time)>2000){
+    tflag=0;
+    flag=0;
+    digitalWrite(N,LOW);
+    Serial.println(score);
+  }
+   Serial.println(N);
 }
