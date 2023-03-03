@@ -25,12 +25,13 @@ void loop() {
 
 
   if (flag==0){
+  //N=6;
     N=random(2,7);
     digitalWrite(N,HIGH);
     flag=1;
   }
-  in = digitalRead(N+5);
-  if (in==HIGH){
+  in = analogRead(N-1);
+  if (in>1000){
     score+=10;
     digitalWrite(N,LOW);
     flag=0;
@@ -46,7 +47,7 @@ void loop() {
     tflag=0;
     flag=0;
     digitalWrite(N,LOW);
-    Serial.println(score);
+    Serial.println(N);
   }
-   Serial.println(N);
+   Serial.println(score);
 }
